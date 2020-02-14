@@ -2,10 +2,20 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../pages/Login.vue'
 import Home from '../pages/Home.vue'
+import postList from '../pages/postList.vue'
+import postPublish from '../pages/postPublish.vue'
 Vue.use(VueRouter)
 const router = new VueRouter({
   routes: [
-    { path: '/', component: Home, name: 'home' },
+    {
+      path: '/',
+      component: Home,
+      name: 'home',
+      children: [
+        { path: 'postList', component: postList, name: 'postList' },
+        { path: 'postPublish', component: postPublish, name: 'postPublish' }
+      ]
+    },
     { path: '/login', component: Login, name: 'login' }
   ]
 })
